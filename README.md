@@ -39,7 +39,7 @@ NOTE:
 
 - _V2_weather.py_ uses the particle sensor on port _/dev/ttyUSB0_. Thus, to make sure the particle sensor is active on RPi, simply type `ls \dev\tty*` on the terminal and check if _/dev/ttyUSB0_ is present (usually at the end of the list).
 
-@1 ----- If _/dev/ttyUSB0_ is not present, try using the particle sensor on another USB port.
+@1 ----- If _/dev/ttyUSB0_ is not present, try using the particle sensor on another USB port. <br>
 @2 ----- If a different portname is present (for e.g., _/dev/ttyUSB2_), simply use Thonny to edit the portname within the _V2_weather.py_ at line 46 to `_/dev/ttyUSB<port_number>_`.
 
 cd ~
