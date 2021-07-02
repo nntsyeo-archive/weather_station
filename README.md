@@ -64,7 +64,16 @@ sudo python3 V2_weatherplot.py
 
 If you wish to execute the _V2_weather.py_ script on boot, instructions below allow adding of the python execution into the booting sequence.
 
-1. Create a shell script named _launcher.sh_ in /home/pi/Desktop/ directory with:
+1. Create a shell script named _launcher.sh_ in /home/pi/Desktop/ directory.
+
+On terminal:
+
+```
+cd ~/Desktop
+nano launcher.sh 
+```
+
+Copy the following script into _launcher.sh_ file:
 
 ```
 #!/bin/sh
@@ -72,22 +81,24 @@ cd /home/pi/weather_station
 sudo python V2_weather.py
 ```
 
-2. Open a terminal and type:
+2. Use crontab method to execute launcher.sh on startup.
+
+Create a log folder for crontab logging via terminal:
 
 ```
-# Create a log file for crontab execution
 cd ~
 mkdir logs
-
-# Use crontab method to startup .sh on boot
-sudo crontab -e     # use /bin/nano for editor if prompted
-
-# Append line at the end of the crontab script
-@reboot sh /home/pi/Desktop/launcher.sh >/home/pi/logs/cronlog 2>&1
-# Exit with pressing 'Ctrl-X', 'y' and then 'enter'
-
-sudo reboot
 ```
+
+And then with the same terminal, use `sudo crontab -e` (with _/bin/nano_ as the editor if prompted).
+Add the following line at the end of the crontab script:
+
+`@reboot sh /home/pi/Desktop/launcher.sh >/home/pi/logs/cronlog 2>&1`
+(NOTE) Exit with pressing 'Ctrl-X', 'y' and then 'enter'.
+
+Enter the following to restart your RPi and the python script will run in the background afterwards.
+`sudo reboot`
+
 
 NOTE:
 
